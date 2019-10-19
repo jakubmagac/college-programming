@@ -5,7 +5,7 @@ void turn_right();
 void jump_over_back();
 
 int main() {
-    turn_on("task_1.kw");
+    turn_on("karelworld.kw");
     set_step_delay(100);
 
     put_beeper();
@@ -37,7 +37,7 @@ int main() {
         }
         jump_over_back();  
     };
-    
+    pick_beeper();
     turn_off();
 
 }
