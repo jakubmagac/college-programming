@@ -5,7 +5,7 @@ void turn_right();
 void jump_over_back();
 
 int main() {
-    turn_on("karelworld.kw");
+    turn_on("task_1.kw");
     set_step_delay(100);
 
     put_beeper();
