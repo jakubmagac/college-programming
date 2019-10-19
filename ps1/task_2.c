@@ -7,7 +7,7 @@ void turn_around();
 void turn_right();
 
 int main() {
-    turn_on("karelworld.kw");
+    turn_on("task_2.kw");
     set_step_delay(100);
 
     inside();
