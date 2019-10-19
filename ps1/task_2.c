@@ -7,7 +7,7 @@ void turn_around();
 void turn_right();
 
 int main() {
-    turn_on("task_2.kw");
+    turn_on("karelworld.kw");
     set_step_delay(100);
 
     inside();
@@ -28,7 +28,7 @@ void out()
     turn_around();
     while(!(right_is_blocked()&&left_is_blocked()&&front_is_blocked()))
     {
-        if(right_is_blocked()&&front_is_clear())
+        if(front_is_clear())
         {
             step();
         }else{
