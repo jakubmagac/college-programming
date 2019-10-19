@@ -25,39 +25,44 @@ int main() {
     turn_left();
     turn_left();
 
-    do 
+    while(no_beepers_present())
     {
         while (front_is_clear())
         {
-            step();
+            if(no_beepers_present()){
+                step();
+            }else{
+                break;
+            }
         }
-        jump_over_back();
-        
-    }while(no_beepers_present());
+        jump_over_back();  
+    };
     
     turn_off();
 
 }
 
 void jump_over_back()
-{
-    turn_right();
-    while(left_is_blocked())
-    {
-        step();
-    }
-    
-    turn_left();
-    do {
-        step();
+{   
+    if(no_beepers_present()){
+        turn_right();
+        while(left_is_blocked())
+        {
+            step();
+        }
+        
+        turn_left();
+        do {
+            step();
 
-    }while(left_is_blocked());
-    turn_left();
-    while(front_is_clear())
-    {
-        step();
+        }while(left_is_blocked());
+        turn_left();
+        while(front_is_clear())
+        {
+            step();
+        }
+        turn_right();
     }
-    turn_right();
 }
 
 
