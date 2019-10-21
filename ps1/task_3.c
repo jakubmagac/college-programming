@@ -37,6 +37,7 @@ void go_home()
     {
         step();
     }
+    turn_around();
     turn_off();
 }
 
