@@ -8,6 +8,7 @@ void go_down();
 void check_first_line();
 bool beepers_upside();
 void check_helper();
+void go_home();
 
 int main() {
     turn_on("task_3.kw");
@@ -16,7 +17,27 @@ int main() {
     while(1){
         check_line();
     }
+    go_home();
+}
 
+void go_home()
+{
+    turn_around();
+    while (front_is_clear())
+    {
+        step();
+    }
+    turn_left();
+    while (front_is_clear())
+    {
+        step();
+    }
+    turn_left();
+    while (front_is_clear())
+    {
+        step();
+    }
+    turn_off();
 }
 
 void check_helper()
@@ -79,7 +100,7 @@ void check_line()
     {
         go_down();
     }else{
-        turn_off();
+        go_home();
     }
 }
 
