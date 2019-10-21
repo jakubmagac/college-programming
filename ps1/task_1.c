@@ -9,14 +9,22 @@ int main() {
     set_step_delay(100);
 
     put_beeper();
+    while(front_is_clear())
+    {
+        step();
+    }
+    jump_over();
 
     do 
     {
-        while (front_is_clear())
+        while(front_is_clear())
         {
             step();
         }
-        jump_over();
+        if(no_beepers_present())
+        {
+            jump_over();
+        }
         
     }while(no_beepers_present());
 
