@@ -9,6 +9,7 @@ void check_first_line();
 bool beepers_upside();
 void check_helper();
 void go_home();
+void go_up();
 
 int main() {
     turn_on("task_3.kw");
@@ -23,10 +24,23 @@ int main() {
 void go_home()
 {
     turn_around();
-    while (front_is_clear())
+    while(no_beepers_present())
     {
-        step();
+        while (front_is_clear())
+        {
+            step();
+            if(beepers_present())
+            {
+                break;
+            }
+        }
+        if(beepers_present())
+        {
+            break;
+        }
+        go_up();
     }
+    
     turn_left();
     while (front_is_clear())
     {
@@ -37,8 +51,21 @@ void go_home()
     {
         step();
     }
-    turn_around();
     turn_off();
+}
+
+void go_up()
+{
+    if(facing_west())
+    {
+        turn_right();
+        step();
+        turn_right();
+    }else{
+        turn_left();
+        step();
+        turn_left();
+    }
 }
 
 void check_helper()
