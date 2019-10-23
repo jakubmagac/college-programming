@@ -37,7 +37,7 @@ void go_home()
         if(beepers_present())
         {
             break;
-        }
+        } 
         go_up();
     }
     
@@ -51,6 +51,7 @@ void go_home()
     {
         step();
     }
+    turn_around();
     turn_off();
 }
 
