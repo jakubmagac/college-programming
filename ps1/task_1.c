@@ -9,11 +9,10 @@ int main() {
     set_step_delay(100);
 
     put_beeper();
-    while(front_is_clear())
+    if(front_is_blocked())
     {
-        step();
-    }
-    jump_over();
+        jump_over();
+    }  
 
     do 
     {
@@ -101,3 +100,4 @@ void turn_right()
     turn_left();
     turn_left();
 }   
+
