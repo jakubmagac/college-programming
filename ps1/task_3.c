@@ -41,7 +41,10 @@ void go_home()
         go_up();
     }
     
-    turn_left();
+    while(not_facing_north())
+    {
+        turn_left();
+    }
     while (front_is_clear())
     {
         step();
