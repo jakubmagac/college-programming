@@ -32,11 +32,12 @@ int main() {
         }
         step();
     }
-    turn_around();
-    while(front_is_clear())
+    if(beepers_present())
     {
-        step();
+        pick_beeper();
     }
+    come_home();
+    turn_around();
     turn_off();
 }
 
@@ -70,7 +71,6 @@ void check_room()
         }
     }while(no_beepers_present());
 
-    /**tricky part*/
     if(front_is_clear())
     {
         pick_beeper();
