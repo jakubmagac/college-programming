@@ -11,9 +11,9 @@ float round_decimal(float result)
     {
         helper /= 10;
         helper += 1;
-    }else{
+    }
+    else{
         helper /= 10;
-        helper += 1;
     }
     result = (int)helper / 100.0;
     return result;
@@ -34,11 +34,16 @@ float lift_a_car(const int stick_length, const int human_weight, const int car_w
 */
 float unit_price(const float pack_price, const int rolls_count, const int pieces_count) 
 {
-
+    float result = ((pack_price / rolls_count) / pieces_count) * 100;
+    return round_decimal(result);    
 }
 
 int main()
-{
+{  
+    printf("%.4f\n", unit_price(4.79, 16, 150));
+    // prints: 0.2000
+    printf("%.4f\n", unit_price(5.63, 20, 200));
+    // prints: 0.1400
     
     return 0;
 }
