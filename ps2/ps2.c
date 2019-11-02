@@ -10,13 +10,17 @@ void counter(const int input_array[], const int array_size, int result_array[2])
 int array_min(const int input_array[], const int array_size);
 int array_max(const int input_array[], const int array_size);
 unsigned long special_counter(const int input_array[], const int array_size);
+int special_numbers(const int input_array[], const int array_size, int result_array[]);
 
 int main()
 {  
     //CODE
-    int input_array[] = {11,12,13,14,15};
-    printf("%lu\n", special_counter(input_array, 5));
-    // prints: 379
+    int input_array[] = {16,17,4,3,5,2};
+    int result_array[6];
+    int count = special_numbers(input_array, 6, result_array);
+    for(int i = 0; i < count; i++){
+        printf("%d ", result_array[i]);
+    }
     return 0;
 }
 
@@ -173,4 +177,29 @@ unsigned long special_counter(const int input_array[], const int array_size)
         }
     }
     return sum;
+}
+
+/**
+ * int array, int, -> int array
+ * return array with all special numbers
+ * number is special if it's bigger then sum of all number on his right side
+*/
+int special_numbers(const int input_array[], const int array_size, int result_array[]) 
+{
+    int count = 0;
+    int sum = 0;
+    for(int i=0;i<array_size;i++)
+    {
+        sum = 0;
+        for(int s=i+1;s<array_size;s++)
+        {
+            sum += input_array[s];
+        }
+        if(input_array[i] > sum)
+        {
+            result_array[count] = input_array[i];
+            count++;
+        }
+    }
+    return count;
 }
