@@ -15,8 +15,6 @@ int special_numbers(const int input_array[], const int array_size, int result_ar
 
 int main()
 {  
-    printf("%li\n", sum_squared(40));
-// prints: 18031015830619195188
     return 0;
 }
 
