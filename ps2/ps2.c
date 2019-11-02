@@ -6,6 +6,9 @@ float unit_price(const float pack_price, const int rolls_count, const int pieces
 int collatz(const int number); 
 int opposite_number(const int n, const int number);
 void counter(const int input_array[], const int array_size, int result_array[2]);
+/*PASCALOV TROJUHOLNIK**/
+int array_min(const int input_array[], const int array_size);
+int array_max(const int input_array[], const int array_size);
 
 int main()
 {  
@@ -16,7 +19,7 @@ int main()
 /**
  * float -> float
  * round to 2 decimal places
-*/
+*/  
 float round_decimal(float result)
 {
     float helper = result * 1000;
@@ -111,4 +114,40 @@ void counter(const int input_array[], const int array_size, int result_array[2])
             result_array[1] += input_array[i];
         }
     }
+}
+
+/**
+ * int array, int, -> int
+ * return smallest value in the array
+*/
+int array_min(const int input_array[], const int array_size)
+{
+    if(input_array == NULL) return -1;
+    int min = input_array[0];
+    for(int i=0;i<array_size;i++)
+    {
+        if(input_array[i]<min)
+        {
+            min = input_array[i];
+        }
+    }
+    return min;
+}
+
+/**
+ * int array, int, -> int
+ * return largest value in the array
+*/
+int array_max(const int input_array[], const int array_size)
+{
+    if(input_array == NULL) return -1;
+    int max = input_array[0];
+    for(int i=0;i<array_size;i++)
+    {
+        if(input_array[i]>max)
+        {
+            max = input_array[i];
+        }
+    }
+    return max;
 }
