@@ -9,10 +9,14 @@ void counter(const int input_array[], const int array_size, int result_array[2])
 /*PASCALOV TROJUHOLNIK**/
 int array_min(const int input_array[], const int array_size);
 int array_max(const int input_array[], const int array_size);
+unsigned long special_counter(const int input_array[], const int array_size);
 
 int main()
 {  
     //CODE
+    int input_array[] = {11,12,13,14,15};
+    printf("%lu\n", special_counter(input_array, 5));
+    // prints: 379
     return 0;
 }
 
@@ -150,4 +154,23 @@ int array_max(const int input_array[], const int array_size)
         }
     }
     return max;
+}
+
+/**
+ * int array, int, -> int
+ * return sum of all numbers in array, even number are squared and then summed
+*/
+unsigned long special_counter(const int input_array[], const int array_size)
+{
+    int sum = 0;
+    for(int i=0;i<array_size;i++)
+    {
+        if(i%2 == 0)
+        {
+            sum += input_array[i];
+        }else{
+            sum += input_array[i] * input_array[i];
+        }
+    }
+    return sum;
 }
