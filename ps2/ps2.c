@@ -1,13 +1,13 @@
 #include <stdio.h>
 
 float round_decimal(float result);
-long factorial(int n);
+long long factorial(int n);
 float lift_a_car(const int stick_length, const int human_weight, const int car_weight);
 float unit_price(const float pack_price, const int rolls_count, const int pieces_count);
 int collatz(const int number); 
 int opposite_number(const int n, const int number);
 void counter(const int input_array[], const int array_size, int result_array[2]);
-long sum_squared(const int line);
+unsigned long sum_squared(const int line);
 int array_min(const int input_array[], const int array_size);
 int array_max(const int input_array[], const int array_size);
 unsigned long special_counter(const int input_array[], const int array_size);
@@ -199,13 +199,13 @@ int special_numbers(const int input_array[], const int array_size, int result_ar
 }
 
 /**
- * int -> int 
+ * unsigned long -> unsigned long  
  * return summed square of all numbers on given line
 */
-long sum_squared(const int line)
+unsigned long sum_squared(const int line)
 {
-    long number;
-    long sum = 0;
+    long long number;
+    long long sum = 0;
     for(int i=0; i<=line; i++)
     {
         number = factorial(line) / (factorial(i)*factorial(line-i));
@@ -215,12 +215,12 @@ long sum_squared(const int line)
 }
 
 /**
- * int -> int 
+ * long long-> long long 
  * return factorial
 */
-long factorial(int n)
+long long factorial(int n)
 {
-    long sum = 1;
+    long long sum = 1;
     for(int i=1;i<=n;i++)
     {
         sum *= i;
