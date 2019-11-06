@@ -201,7 +201,7 @@ int special_numbers(const int input_array[], const int array_size, int result_ar
 }
 
 /**
- * unsigned long -> unsigned long  
+ * int -> unsigned long  
  * return summed square of all numbers on given line
 */
 unsigned long sum_squared(const int line)
@@ -210,6 +210,10 @@ unsigned long sum_squared(const int line)
     return number;
 }
 
+/**
+ * int, int -> long double
+ * return factorial, you can make startpoint
+*/
 long double factorial(int n, int start)
 {
     long double sum = start;
