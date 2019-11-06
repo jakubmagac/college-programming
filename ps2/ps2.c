@@ -1,7 +1,7 @@
 #include <stdio.h>
+#include <math.h>
 
 float round_decimal(float result);
-long long factorial(int n);
 float lift_a_car(const int stick_length, const int human_weight, const int car_weight);
 float unit_price(const float pack_price, const int rolls_count, const int pieces_count);
 int collatz(const int number); 
@@ -12,6 +12,7 @@ int array_min(const int input_array[], const int array_size);
 int array_max(const int input_array[], const int array_size);
 unsigned long special_counter(const int input_array[], const int array_size);
 int special_numbers(const int input_array[], const int array_size, int result_array[]);
+long double factorial(int n, int start);
 
 int main()
 {  
@@ -154,6 +155,7 @@ int array_max(const int input_array[], const int array_size)
     return max;
 }
 
+
 /**
  * int array, int, -> int
  * return sum of all numbers in array, even number are squared and then summed
@@ -204,26 +206,18 @@ int special_numbers(const int input_array[], const int array_size, int result_ar
 */
 unsigned long sum_squared(const int line)
 {
-    long long number;
-    long long sum = 0;
-    for(int i=0; i<=line; i++)
+    unsigned long number = factorial((2*line), line+1) / factorial(line, 1);
+    return number;
+}
+
+long double factorial(int n, int start)
+{
+    long double sum = start;
+    for(int i=start;i<n;i++)
     {
-        number = factorial(line) / (factorial(i)*factorial(line-i));
-        sum += (number*number);
+        sum *= i+1;
     }
+
     return sum;
 }
 
-/**
- * long long-> long long 
- * return factorial
-*/
-long long factorial(int n)
-{
-    long long sum = 1;
-    for(int i=1;i<=n;i++)
-    {
-        sum *= i;
-    }
-    return sum;
-}
