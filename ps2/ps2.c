@@ -12,10 +12,10 @@ int array_min(const int input_array[], const int array_size);
 int array_max(const int input_array[], const int array_size);
 unsigned long special_counter(const int input_array[], const int array_size);
 int special_numbers(const int input_array[], const int array_size, int result_array[]);
-long double factorial(int n, int start);
 
 int main()
 {  
+
     return 0;
 }
 
@@ -90,7 +90,7 @@ int opposite_number(const int n, const int number)
     int shift = n / 2;
     if(number == shift)
     {
-        return shift;
+        return 0;
     }
     if(number < shift)
     {
@@ -201,27 +201,26 @@ int special_numbers(const int input_array[], const int array_size, int result_ar
 }
 
 /**
- * int -> unsigned long  
+ * int -> unsigned long
  * return summed square of all numbers on given line
 */
 unsigned long sum_squared(const int line)
 {
-    unsigned long number = factorial((2*line), line+1) / factorial(line, 1);
-    return number;
-}
+    int rows = line+1;
+    long long coef = 1, results[line], sum = 0;
 
-/**
- * int, int -> long double
- * return factorial, you can make startpoint
-*/
-long double factorial(int n, int start)
-{
-    long double sum = start;
-    for(int i=start;i<n;i++)
+    //https://www.programiz.com/c-programming/examples/pyramid-pattern
+    for(int i=0; i<=line; i++)
     {
-        sum *= i+1;
+        if (i==0 || line==0) coef = 1;
+        else coef = coef*(line-i+1)/i;
+        results[i] = coef;
     }
 
+    for(int i=0; i<rows; i++)
+    {
+       sum += (results[i]*results[i]);
+    }
     return sum;
 }
 
