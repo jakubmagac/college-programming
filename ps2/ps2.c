@@ -15,7 +15,8 @@ int special_numbers(const int input_array[], const int array_size, int result_ar
 
 int main()
 {  
-
+    printf("%d\n", opposite_number(10, 2));
+    // prints: 7
     return 0;
 }
 
@@ -85,21 +86,12 @@ int collatz(const int number)
  * int, int -> int
  * return opposte number in the circle
 */
-int opposite_number(const int n, const int number)
+int opposite_number(const int n, const int number)// 10 2
 {
     int shift = n / 2;
-    if(number == shift)
-    {
-        return 0;
-    }
-    if(number < shift)
-    {
-        return number  + shift;
-    }
-    if(number > shift)
-    {
-        return number - shift;
-    }
+    if(number == shift) return 0;
+    if(number < shift) return number  + shift;
+    if(number > shift) return number - shift;
 }
 
 /**
