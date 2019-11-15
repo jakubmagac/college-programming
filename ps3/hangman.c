@@ -158,11 +158,11 @@ void hangman(const char secret[])
         // rovnako dlhe slovo
         if(strlen(guess) == strlen(secret)){
             for(int i=0;i<strlen(guess);i++)
-                letters_guessed[i] = guess[i];
+                letters_guessed[i] = tolower(guess[i]);
             break;    
         }
 
-        c = guess[0];
+        c = tolower(guess[0]);
 
         if(!(c>='a' && c<='z')){
             printf("Oops! %c is not a valid letter:", c);
