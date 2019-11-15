@@ -99,6 +99,7 @@ void get_available_letters(const char letters_guessed[], char available_letters[
 {
     int size_guessed = strlen(letters_guessed);
     int size_available = strlen(available_letters);
+    available_letters =  "abcdefghijklmnopqrstuvwxyz";
     
     for(int i=0;i<size_guessed;i++)
     {
@@ -133,7 +134,7 @@ void hangman(const char secret[])
 
     int numbers_of_chances = 8;
     char letters_guessed[26] = {'\n'};
-    char available_letters[] = "abcdefghijklmnopqrstuvwxyz";
+    char available_letters[26];
     char guessed_word[8]; 
     char guess[10]; 
     char c;
