@@ -71,8 +71,9 @@ void get_guessed_word(const char secret[], const char letters_guessed[], char gu
 {
     int size_secret = strlen(secret);
     int size_guessed = strlen(letters_guessed);
+    int size_guessed_word = strlen(guessed_word);
 
-    for(int i=0;i<size_secret;i++)
+    for(int i=0;i<size_guessed_word;i++)
     {
         guessed_word[i] = '_';
     }
@@ -92,7 +93,6 @@ void get_guessed_word(const char secret[], const char letters_guessed[], char gu
     {
         printf("%c ", guessed_word[i]);
     }
-    printf("\n");
 }
 
 void get_available_letters(const char letters_guessed[], char available_letters[]) 
@@ -146,7 +146,6 @@ void hangman(const char secret[])
 
         get_available_letters(letters_guessed, available_letters);
         printf("You have %d guesses left. \nAvailable letters: %s\n", numbers_of_chances, available_letters);
-
         
         // char prepocitany
         printf("Please guess a letter: ");
