@@ -39,7 +39,7 @@ void get_available_letters(const char letters_guessed[], char available_letters[
  *
  * @param secret the secret word lowercase
  */
-//void hangman(const char secret[]);
+void hangman(const char secret[]);
 
 
 /**
@@ -52,3 +52,4 @@ void get_available_letters(const char letters_guessed[], char available_letters[
  * @param secret buffer, where random word will be read
  * @return status code
  */
+int get_word(char secret[]);

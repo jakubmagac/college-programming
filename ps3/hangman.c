@@ -3,9 +3,9 @@
 #include <sys/stat.h>
 #include "hangman.h"
 #include <string.h>
+#include <ctype.h>
 
-
-/*int get_word(char secret[]){
+int get_word(char secret[]){
     // check if file exists first and is readable
     FILE *fp = fopen(WORDLIST_FILENAME, "rb");
     if( fp == NULL ){
@@ -32,7 +32,7 @@
     fclose(fp);
 
     return 0;
-}*/
+}
 
 int is_word_guessed(const char secret[], const char letters_guessed[])
 {
@@ -87,13 +87,19 @@ void get_guessed_word(const char secret[], const char letters_guessed[], char gu
             }
         }
     }
+
+    for(int i=0;i<size_secret;i++)
+    {
+        printf("%c ", guessed_word[i]);
+    }
+    printf("\n");
 }
 
 void get_available_letters(const char letters_guessed[], char available_letters[]) 
 {
     int size_guessed = strlen(letters_guessed);
     int size_available = strlen(available_letters);
-
+    
     for(int i=0;i<size_guessed;i++)
     {
         for(int s=0;s<size_available;s++)
@@ -104,16 +110,85 @@ void get_available_letters(const char letters_guessed[], char available_letters[
             }
         }
     }
+
     for(int s=0;s<size_available;s++)
     {
         if(available_letters[s]=='*')
         {
-            for(int i=s;i<size_available;i++){
-                available_letters[i] = available_letters[i+1];
+            for(int i=s; i<size_available-1; i++)
+            {
+                available_letters[i] = available_letters[i + 1];
             }
-            if(available_letters[i+1] == '*') i--;
-
-
+            if(available_letters[s]=='*') s--;
+            available_letters[size_available-1] = '\0';
+            size_available--;
         }
     }
+}
+
+void hangman(const char secret[])
+{
+    printf("Welcome to the game, Hangman!\n");
+    printf("I am thinking of a word that is %lu letters long\n", strlen(secret));
+
+    int numbers_of_chances = 8;
+    char letters_guessed[26] = {'\n'};
+    char available_letters[] = "abcdefghijklmnopqrstuvwxyz";
+    char guessed_word[8]; 
+    char guess[10]; 
+    char c;
+    int j = 0;
+
+    while(numbers_of_chances > 0)
+    {
+    
+        printf("-------------\n");
+
+        get_available_letters(letters_guessed, available_letters);
+        printf("You have %d guesses left. \nAvailable letters: %s\n", numbers_of_chances, available_letters);
+
+        
+        // char prepocitany
+        printf("Please guess a letter: ");
+
+        scanf("%9s", guess);
+        while (getchar() != '\n') 
+            ;   
+        
+        // rovnako dlhe slovo
+        if(strlen(guess) == strlen(secret)){
+            for(int i=0;i<strlen(guess);i++)
+                letters_guessed[i] = guess[i];
+            break;    
+        }
+
+        c = guess[0];
+
+        if(!(c>='a' && c<='z')){
+            printf("Oops! %c is not a valid letter:", c);
+            get_guessed_word(secret, letters_guessed, guessed_word);
+            continue;
+        }
+        if(strchr(letters_guessed,c)){
+            printf("Oops! You've already guessed that letter: ");
+            get_guessed_word(secret, letters_guessed, guessed_word);
+            continue;
+        }
+        
+        if(strchr(secret,c)) printf("Good guess: ");
+        if(!strchr(secret,c)){
+           printf("Oops! That letter is not in my word:");
+           numbers_of_chances--;
+        }
+
+        letters_guessed[j] = c;
+        j++;
+        if(is_word_guessed(secret, letters_guessed)) break;
+        get_guessed_word(secret, letters_guessed, guessed_word);
+   
+   
+    }
+    printf("-------------\n");
+    if(!is_word_guessed(secret,letters_guessed)) printf("Sorry, bad guess. The word was %s.\n", secret);
+    if(is_word_guessed(secret,letters_guessed)) printf("Congratulations, you won!\n");
 }
