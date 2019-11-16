@@ -160,7 +160,7 @@ void hangman(const char secret[])
         c = tolower(guess[0]);
 
         if(!(c>='a' && c<='z')){
-            printf("Oops! %c is not a valid letter:", c);
+            printf("Oops! %c is not a valid letter: ", c);
             get_guessed_word(secret, letters_guessed, guessed_word);
             continue;
         }
@@ -172,7 +172,7 @@ void hangman(const char secret[])
         
         if(strchr(secret,c)) printf("Good guess: ");
         if(!strchr(secret,c)){
-           printf("Oops! That letter is not in my word:");
+           printf("Oops! That letter is not in my word: ");
            numbers_of_chances--;
         }
 
