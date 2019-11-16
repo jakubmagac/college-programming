@@ -93,6 +93,8 @@ void get_guessed_word(const char secret[], const char letters_guessed[], char gu
     {
         printf("%c ", guessed_word[i]);
     }
+    guessed_word[size_secret] = '\0';
+
 }
 
 void get_available_letters(const char letters_guessed[], char available_letters[]) 
