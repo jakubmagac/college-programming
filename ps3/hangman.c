@@ -34,6 +34,8 @@ int get_word(char secret[]){
     return 0;
 }
 
+// just comment so I can have 10 contrib/ day
+
 int is_word_guessed(const char secret[], const char letters_guessed[])
 {
     int size_secret = strlen(secret);
