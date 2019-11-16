@@ -86,7 +86,7 @@ void get_guessed_word(const char secret[], const char letters_guessed[], char gu
             }
         }
     }
-    
+
     guessed_word[size_secret] = '\0';
     for(int i=0;i<size_secret;i++)
         printf("%c ", guessed_word[i]);
@@ -100,28 +100,20 @@ void get_available_letters(const char letters_guessed[], char available_letters[
     available_letters =  "abcdefghijklmnopqrstuvwxyz";
     
     for(int i=0;i<size_guessed;i++)
-    {
         for(int s=0;s<size_available;s++)
-        {
             if(letters_guessed[i] == available_letters[s])
-            {
                 available_letters[s] = '*';
-            }
-        }
-    }
 
-    for(int s=0;s<size_available;s++)
-    {
-        if(available_letters[s]=='*')
-        {
-            for(int i=s; i<size_available-1; i++)
+    if(size_guessed > 0){
+        for(int s=0;s<size_available;s++)
+            if(available_letters[s]=='*')
             {
-                available_letters[i] = available_letters[i + 1];
+                for(int i=s; i<size_available-1; i++)
+                    available_letters[i] = available_letters[i + 1];
+                if(available_letters[s]=='*') s--;
+                available_letters[size_available-1] = '\0';
+                size_available--;
             }
-            if(available_letters[s]=='*') s--;
-            available_letters[size_available-1] = '\0';
-            size_available--;
-        }
     }
 }
 
