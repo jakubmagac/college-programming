@@ -89,10 +89,10 @@ void get_guessed_word(const char secret[], const char letters_guessed[], char gu
     }
 
     guessed_word[size_secret] = '\0';
-    for(int i=0;i<size_secret;i++)
-        printf("%c ", guessed_word[i]);
-    printf("\b");
-
+    for(int i=0;i<size_secret;i++){
+        if(i != size_secret-1) printf("%c ", guessed_word[i]);
+        else printf("%c", guessed_word[i]);
+    }
 }
 
 void get_available_letters(const char letters_guessed[], char available_letters[]) 
