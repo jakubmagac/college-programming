@@ -127,7 +127,7 @@ void get_available_letters(const char letters_guessed[], char available_letters[
 void hangman(const char secret[])
 {
     printf("Welcome to the game, Hangman!\n");
-    printf("I am thinking of a word that is %lu letters long", strlen(secret));
+    printf("I am thinking of a word that is %lu letters long.", strlen(secret));
 
     int numbers_of_chances = 8;
     char letters_guessed[26] = {'\n'};
