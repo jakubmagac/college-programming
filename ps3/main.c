@@ -8,6 +8,6 @@ int main()
     char secret[15];
     srand(time(NULL));
     get_word(secret);
-    hangman(secret);
+    hangman("temporized");
     return 0;
 }

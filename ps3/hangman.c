@@ -134,7 +134,7 @@ void hangman(const char secret[])
     char letters_guessed[26] = {'\n'};
     char available_letters[26];
     char guessed_word[8]; 
-    char guess[10]; 
+    char guess[12]; 
     char c;
     int j = 0;
 
@@ -149,14 +149,14 @@ void hangman(const char secret[])
         // char prepocitany
         printf("Please guess a letter: ");
 
-        scanf("%9s", guess);
+        scanf("%11s", guess);
         while (getchar() != '\n') 
             ;   
         
-        // rovnako dlhe slovo
-        if(strlen(guess) == strlen(secret)){
-            for(int i=0;i<strlen(guess);i++)
+        if(strlen(guess) > 1){
+            for(int i=0;i<strlen(guess);i++){
                 letters_guessed[i] = tolower(guess[i]);
+            }
             break;    
         }
 
@@ -186,7 +186,9 @@ void hangman(const char secret[])
    
    
     }
-    printf("\n-------------\n");
-    if(!is_word_guessed(secret,letters_guessed)) printf("Sorry, you ran out of guesses. The word was %s.\n", secret);
+    if(!is_word_guessed(secret,letters_guessed)){
+        printf("\n-------------\n");
+        printf("Sorry, you ran out of guesses. The word was %s.\n", secret);
+    } 
     if(is_word_guessed(secret,letters_guessed)) printf("Congratulations, you won!\n");
 }
