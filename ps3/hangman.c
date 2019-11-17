@@ -143,7 +143,7 @@ void hangman(const char secret[])
         printf("\n-------------\n");
 
         get_available_letters(letters_guessed, available_letters);
-        printf("You have %d guesses left. \nAvailable letters: %s\n", numbers_of_chances, available_letters);
+        printf("You have %d guesses left.\nAvailable letters: %s\n", numbers_of_chances, available_letters);
         
         // char prepocitany
         printf("Please guess a letter: ");
