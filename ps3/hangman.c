@@ -182,7 +182,10 @@ void hangman(const char secret[])
         letters_guessed[j] = c;
         j++;
         get_guessed_word(secret, letters_guessed, guessed_word);
-        if(is_word_guessed(secret, letters_guessed)) break;
+        if(is_word_guessed(secret, letters_guessed)){
+            printf("\n-------------\n");
+            break;
+        } 
    
    
     }
