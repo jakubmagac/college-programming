@@ -127,7 +127,7 @@ void get_available_letters(const char letters_guessed[], char available_letters[
 void hangman(const char secret[])
 {
     printf("Welcome to the game, Hangman!\n");
-    printf("I am thinking of a word that is %lu letters long.\n", strlen(secret));
+    printf("I am thinking of a word that is %lu letters long.", strlen(secret));
 
     int numbers_of_chances = 8;
     char letters_guessed[26] = {'\n'};
@@ -164,11 +164,13 @@ void hangman(const char secret[])
         if(!(c>='a' && c<='z')){
             printf("Oops! '%c' is not a valid letter: ", c);
             get_guessed_word(secret, letters_guessed, guessed_word);
+            printf("\b");
             continue;
         }
         if(strchr(letters_guessed,c)){
             printf("Oops! You've already guessed that letter: ");
             get_guessed_word(secret, letters_guessed, guessed_word);
+            printf("\b");
             continue;
         }
         
@@ -181,6 +183,7 @@ void hangman(const char secret[])
         letters_guessed[j] = c;
         j++;
         get_guessed_word(secret, letters_guessed, guessed_word);
+        printf("\b");
         if(is_word_guessed(secret, letters_guessed)) break;
    
    
