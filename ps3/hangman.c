@@ -91,6 +91,7 @@ void get_guessed_word(const char secret[], const char letters_guessed[], char gu
     guessed_word[size_secret] = '\0';
     for(int i=0;i<size_secret;i++)
         printf("%c ", guessed_word[i]);
+    printf("\b");
 
 }
 
@@ -164,13 +165,11 @@ void hangman(const char secret[])
         if(!(c>='a' && c<='z')){
             printf("Oops! '%c' is not a valid letter: ", c);
             get_guessed_word(secret, letters_guessed, guessed_word);
-            printf("\b");
             continue;
         }
         if(strchr(letters_guessed,c)){
             printf("Oops! You've already guessed that letter: ");
             get_guessed_word(secret, letters_guessed, guessed_word);
-            printf("\b");
             continue;
         }
         
@@ -183,7 +182,6 @@ void hangman(const char secret[])
         letters_guessed[j] = c;
         j++;
         get_guessed_word(secret, letters_guessed, guessed_word);
-        printf("\b");
         if(is_word_guessed(secret, letters_guessed)) break;
    
    
