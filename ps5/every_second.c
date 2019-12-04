@@ -1,10 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
+int main(int argc, char* argv[])
 {
-    FILE *rFile = fopen("file.txt", "r");
-    FILE *wFile = fopen("file1.txt", "w");
+    FILE *rFile = fopen(argv[1], "r");
+    FILE *wFile;
+    wFile = fopen("file.txt","w");
+
+    if(argc != 2){
+      printf("Wrong number of parameters.\n");
+      exit(EXIT_FAILURE);
+    }
+
     char ch; int stop = 0;
 
     while(1){
