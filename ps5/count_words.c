@@ -5,6 +5,8 @@ int main(int argc, char* argv[])
     FILE *rwFile = fopen(argv[1], "r");
 
     if(argc != 2){
+        fclose(rwFile);
+        rwFile = fopen(argv[1], "w");
         fputc('0', rwFile);
         fclose(rwFile);
         return -1;
@@ -34,6 +36,8 @@ int main(int argc, char* argv[])
     }
 
     if(sum == 0){
+        fclose(rwFile);
+        rwFile = fopen(argv[1], "w");
         fputc('0', rwFile);
         fclose(rwFile);
         return 0;
