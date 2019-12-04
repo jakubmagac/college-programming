@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
     }
 
     fclose(rFile);    
-    FILE *rFile = fopen(argv[1], "w");
+    rFile = fopen(argv[1], "w");
 
     char c = fgetc(wFile); 
     while (c != EOF) 
@@ -70,7 +70,6 @@ int main(int argc, char* argv[])
         fputc(c, rFile); 
         c = fgetc(wFile); 
     } 
-
 
     fclose(wFile);
     fclose(rFile);    

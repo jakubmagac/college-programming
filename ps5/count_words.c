@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
     }
 
     fclose(rwFile);    
-    FILE *rwFile = fopen(argv[1], "w");
+    rwFile = fopen(argv[1], "w");
 
     for(int i=0;i<size;i++){
         char c = (char)result[i] + 48; 
