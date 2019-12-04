@@ -61,6 +61,17 @@ int main(int argc, char* argv[])
         if(stop==1) break;
     }
 
+    fclose(rFile);    
+    FILE *rFile = fopen(argv[1], "w");
+
+    char c = fgetc(wFile); 
+    while (c != EOF) 
+    { 
+        fputc(c, rFile); 
+        c = fgetc(wFile); 
+    } 
+
+
     fclose(wFile);
     fclose(rFile);    
     return 0;

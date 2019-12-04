@@ -2,9 +2,7 @@
 
 int main(int argc, char* argv[])
 {
-    FILE *rFile = fopen(argv[1], "r");
-    FILE *wFile;
-    wFile = fopen("file.txt","w");
+    FILE *rwFile = fopen(argv[1], "r");
 
     if(argc != 2){
       return -1;
@@ -14,10 +12,10 @@ int main(int argc, char* argv[])
     int sum = 0; char ch = 0; int same = 1; 
 
     while(ch != EOF){
-        ch = fgetc(rFile);
+        ch = fgetc(rwFile);
         if(ch=='a' || ch=='A'){
             for(int i=0;i<5;i++){
-                ch = fgetc(rFile);
+                ch = fgetc(rwFile);
                 if(ch != ananas[i] && ch != ananas[i] - 32){
                     same = 0;
                     break;
@@ -45,13 +43,15 @@ int main(int argc, char* argv[])
         divider /= 10;
     }
 
+    fclose(rwFile);    
+    FILE *rwFile = fopen(argv[1], "w");
+
     for(int i=0;i<size;i++){
         char c = (char)result[i] + 48; 
-        fputc(c, wFile);
+        fputc(c, rwFile);
     }
 
 
-    fclose(wFile);
-    fclose(rFile);    
+    fclose(rwFile);    
     return 0;
 }
