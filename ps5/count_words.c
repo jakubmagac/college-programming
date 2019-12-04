@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
 
     int sum = 0; char ch = 0;  
 
-    while((ch = fgetc(rwFile)) != EOF){
+    while(ch != EOF){
         if(ch=='a' || ch=='A'){
             ch = fgetc(rwFile);
             if(ch=='n' || ch=='N'){
@@ -33,6 +33,7 @@ int main(int argc, char* argv[])
                 }
             }
         }
+        if(ch != 'a' && ch != 'A') ch = fgetc(rwFile);
     }
 
     if(sum == 0){
