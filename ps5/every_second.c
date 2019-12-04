@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
     wFile = fopen("file.txt","w");
 
     if(argc != 2){
-      return -1;
+        return -1;
     }
 
     char ch; int stop = 0;

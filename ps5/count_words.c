@@ -5,25 +5,38 @@ int main(int argc, char* argv[])
     FILE *rwFile = fopen(argv[1], "r");
 
     if(argc != 2){
-      return -1;
+        fputc("0", rwFile);
+        fclose(rwFile);
+        return -1;
     }
 
-    char ananas[] = {'n','a','n','a','s'};
-    int sum = 0; char ch = 0; int same = 1; 
+    int sum = 0; char ch = 0;  
 
-    while(ch != EOF){
-        ch = fgetc(rwFile);
+    while(ch = fgetc(rwFile) != EOF){
         if(ch=='a' || ch=='A'){
-            for(int i=0;i<5;i++){
+            ch = fgetc(rwFile);
+            if(ch=='n' || ch=='N'){
                 ch = fgetc(rwFile);
-                if(ch != ananas[i] && ch != ananas[i] - 32){
-                    same = 0;
-                    break;
-                } 
+                if(ch=='a' || ch=='A'){
+                    ch = fgetc(rwFile);
+                    if(ch=='n' || ch=='N'){
+                        ch = fgetc(rwFile);
+                        if(ch=='a' || ch=='A'){
+                            ch = fgetc(rwFile);
+                            if(ch=='s' || ch=='S'){
+                                sum++;
+                            }
+                        }
+                    }
+                }
             }
-            if(same==1) sum++;
-            else same = 1;
         }
+    }
+
+    if(sum == 0){
+        fputc("0", rwFile);
+        fclose(rwFile);
+        return 0;
     }
 
     int size = 0; int copy_sum = sum;
