@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 int main(int argc, char* argv[])
 {
@@ -8,8 +7,7 @@ int main(int argc, char* argv[])
     wFile = fopen("file.txt","w");
 
     if(argc != 2){
-      printf("Wrong number of parameters.\n");
-      exit(EXIT_FAILURE);
+      return -1;
     }
 
     char ananas[] = {'n','a','n','a','s'};
