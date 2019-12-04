@@ -8,12 +8,12 @@ int main()
     char ch; int stop = 0;
 
     while(1){
-        if(ch=fgetc(rFile)=='S'){
-            if(ch=fgetc(rFile)=='T'){
-                if(ch=fgetc(rFile)=='A'){
-                    if(ch=fgetc(rFile)=='R'){
-                        if(ch=fgetc(rFile)=='T'){
-                            if(ch=fgetc(rFile)==' '){
+        if((ch=fgetc(rFile))=='S'){
+            if((ch=fgetc(rFile))=='T'){
+                if((ch=fgetc(rFile))=='A'){
+                    if((ch=fgetc(rFile))=='R'){
+                        if((ch=fgetc(rFile))=='T'){
+                            if((ch=fgetc(rFile))==' '){
                                 break;
                             }
                         }
@@ -27,9 +27,9 @@ int main()
         do{
             ch=fgetc(rFile);
             if(ch=='S'){
-                if(ch=fgetc(rFile)=='T'){
-                    if(ch=fgetc(rFile)=='O'){
-                        if(ch=fgetc(rFile)=='P'){
+                if((ch=fgetc(rFile))=='T'){
+                    if((ch=fgetc(rFile))=='O'){
+                        if((ch=fgetc(rFile))=='P'){
                                     stop = 1;
                                     break;
                         }
@@ -42,9 +42,9 @@ int main()
         do{
             ch=fgetc(rFile);
             if(ch=='S'){
-                if(ch=fgetc(rFile)=='T'){
-                    if(ch=fgetc(rFile)=='O'){
-                        if(ch=fgetc(rFile)=='P'){
+                if((ch=fgetc(rFile))=='T'){
+                    if((ch=fgetc(rFile))=='O'){
+                        if((ch=fgetc(rFile))=='P'){
                                     stop = 1;
                                     break;
                         }

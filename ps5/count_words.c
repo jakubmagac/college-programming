@@ -33,7 +33,7 @@ int main()
         size++; 
     }
 
-    int result[size]; int copy_size = size; int divider = 1;
+    int result[size]; int divider = 1;
     for(int i=0;i<size-1;i++){
         divider *= 10;
     }
@@ -46,7 +46,7 @@ int main()
 
     for(int i=0;i<size;i++){
         char c = (char)result[i] + 48; 
-        putc(c, wFile);
+        fputc(c, wFile);
     }
 
 
