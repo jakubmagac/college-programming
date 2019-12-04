@@ -3,17 +3,25 @@
 int main(int argc, char* argv[])
 {
     FILE *rFile = fopen(argv[1], "r");
-    FILE *wFile;
-    wFile = fopen("file.txt","w");
+    FILE *wFile = fopen("file.txt","w");
 
+    // ERRORS HANDLING
     if(argc != 2){
         fclose(rFile);
-        rFile = fopen(argv[1], "w");
-        fclose(rFile);
+        fclose(wFile);
         return -1;
     }
 
-    char ch; int stop = 0;
+    int ch = fgetc(rFile);
+    if (ch == EOF) {
+        fclose(rFile);
+        fclose(wFile);
+        return -1;
+    } else {
+        ungetc(ch, rFile);
+    }
+
+    int stop = 0;
 
     while(1){
         if((ch=fgetc(rFile))=='S'){
