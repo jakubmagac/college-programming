@@ -4,6 +4,7 @@ int main(int argc, char* argv[])
 {
     FILE *rFile = fopen(argv[1], "r");
     FILE *wFile = fopen("file.txt","w");
+    int stop = 0;
 
     // ERRORS HANDLING
     if(argc != 2){
@@ -13,18 +14,15 @@ int main(int argc, char* argv[])
     }
 
     int ch = fgetc(rFile);
-    if (ch == EOF) {
+    if(ch == EOF) {
         fclose(rFile);
         fclose(wFile);
         return -1;
-    } else {
-        ungetc(ch, rFile);
-    }
+    } 
 
-    int stop = 0;
-
+    // Zvysok
     while(1){
-        if((ch=fgetc(rFile))=='S'){
+        if(ch=='S'){
             if((ch=fgetc(rFile))=='T'){
                 if((ch=fgetc(rFile))=='A'){
                     if((ch=fgetc(rFile))=='R'){
@@ -37,6 +35,7 @@ int main(int argc, char* argv[])
                 }
             }
         }
+        ch = fgetc(rFile);
     }
 
     while(1){
