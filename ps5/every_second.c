@@ -3,14 +3,13 @@
 int main(int argc, char* argv[])
 {
     FILE *rFile = fopen(argv[1], "r");
-    FILE *wFile = fopen("file1.txt","w");
+    FILE *wFile = fopen(argv[2], "w");
     int stop = 0; 
 
     char ch = fgetc(rFile);
     if(ch == EOF){
         fclose(rFile);
-        rFile = fopen(argv[1], "w");
-        fclose(rFile);
+        fclose(wFile);
         return -1;
     }
 
@@ -68,14 +67,5 @@ int main(int argc, char* argv[])
     fclose(rFile);
     fclose(wFile);    
 
-    rFile = fopen(argv[1], "w");
-    wFile = fopen("file1.txt","r");
-
-    ch = fgetc(wFile); 
-    while (ch != EOF) 
-    { 
-        fputc(ch, rFile); 
-        ch = fgetc(wFile); 
-    } 
     return 0;
 }
