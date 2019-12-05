@@ -3,22 +3,16 @@
 int main(int argc, char* argv[])
 {
     FILE *rFile = fopen(argv[1], "r");
-    FILE *wFile = fopen("file.txt","w");
-    int stop = 0;
+    FILE *wFile = fopen("file1.txt","w");
+    int stop = 0; 
 
-    // ERRORS HANDLING
-    if(argc != 2){
+    char ch = fgetc(rFile);
+    if(ch == EOF){
         fclose(rFile);
-        fclose(wFile);
+        rFile = fopen(argv[1], "w");
+        fclose(rFile);
         return -1;
     }
-
-    int ch = fgetc(rFile);
-    if(ch == EOF) {
-        fclose(rFile);
-        fclose(wFile);
-        return -1;
-    } 
 
     // Zvysok
     while(1){
@@ -70,18 +64,18 @@ int main(int argc, char* argv[])
         }while(ch != ' ');
         if(stop==1) break;
     }
+    
+    fclose(rFile);
+    fclose(wFile);    
 
-    fclose(rFile);    
     rFile = fopen(argv[1], "w");
+    wFile = fopen("file1.txt","r");
 
-    char c = fgetc(wFile); 
-    while (c != EOF) 
+    ch = fgetc(wFile); 
+    while (ch != EOF) 
     { 
-        fputc(c, rFile); 
-        c = fgetc(wFile); 
+        fputc(ch, rFile); 
+        ch = fgetc(wFile); 
     } 
-
-    fclose(wFile);
-    fclose(rFile);    
     return 0;
 }
