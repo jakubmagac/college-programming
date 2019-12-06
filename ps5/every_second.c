@@ -13,14 +13,14 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    // Zvysok
-    while(1){
+    while(ch != EOF){
         if(ch=='S'){
             if((ch=fgetc(rFile))=='T'){
                 if((ch=fgetc(rFile))=='A'){
                     if((ch=fgetc(rFile))=='R'){
                         if((ch=fgetc(rFile))=='T'){
                             if((ch=fgetc(rFile))==' '){
+                                ch = fgetc(rFile);
                                 break;
                             }
                         }
@@ -31,37 +31,38 @@ int main(int argc, char* argv[])
         ch = fgetc(rFile);
     }
 
-    while(1){
-        do{
-            ch=fgetc(rFile);
-            if(ch=='S'){
+    // uz je na prvom slove
+    while(ch != EOF){
+        while(ch != ' ' && ch != EOF){
+            if(ch == 'S'){
                 if((ch=fgetc(rFile))=='T'){
                     if((ch=fgetc(rFile))=='O'){
                         if((ch=fgetc(rFile))=='P'){
-                                    stop = 1;
-                                    break;
+                            break;
                         }
                     }
                 }
+            }else {
+                ch = fgetc(rFile);
             }
-        }while(ch != ' ');
-        if(stop==1) break;
+        }
+        if(ch==EOF) break;
+        ch = 0;
 
-        do{
-            ch=fgetc(rFile);
-            if(ch=='S'){
+        while(ch != ' ' && ch != EOF){
+            if((ch=fgetc(rFile))== 'S'){
                 if((ch=fgetc(rFile))=='T'){
                     if((ch=fgetc(rFile))=='O'){
                         if((ch=fgetc(rFile))=='P'){
-                                    stop = 1;
-                                    break;
+                            break;
                         }
                     }
                 }
             }
-            fputc(ch,wFile);
-        }while(ch != ' ');
-        if(stop==1) break;
+            if(ch != EOF) fputc(ch, wFile);
+        }
+
+
     }
     
     fclose(rFile);
