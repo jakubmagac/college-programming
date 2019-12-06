@@ -10,6 +10,7 @@ int main(int argc, char* argv[])
 
     char ch = fgetc(rFile);
     if(ch == EOF){
+        fputc('\0', wFile);
         fclose(rFile);
         fclose(wFile);
         return -1;
