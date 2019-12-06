@@ -4,7 +4,6 @@ int main(int argc, char* argv[])
 {
     FILE *rFile = fopen(argv[1], "r");
     FILE *wFile = fopen(argv[2], "w");
-    int stop = 0; 
 
     char ch = fgetc(rFile);
     if(ch == EOF){
