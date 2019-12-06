@@ -1,9 +1,12 @@
 #include <stdio.h>
 
+void find_start();
+
 int main(int argc, char* argv[])
 {
     FILE *rFile = fopen(argv[1], "r");
     FILE *wFile = fopen(argv[2], "w");
+    int stop = 0;
 
     char ch = fgetc(rFile);
     if(ch == EOF){
@@ -37,6 +40,7 @@ int main(int argc, char* argv[])
                 if((ch=fgetc(rFile))=='T'){
                     if((ch=fgetc(rFile))=='O'){
                         if((ch=fgetc(rFile))=='P'){
+                            stop = 1;
                             break;
                         }
                     }
@@ -45,7 +49,7 @@ int main(int argc, char* argv[])
                 ch = fgetc(rFile);
             }
         }
-        if(ch==EOF) break;
+        if(ch==EOF || stop == 1) break; 
         ch = 0;
 
         while(ch != ' ' && ch != EOF){
@@ -53,16 +57,22 @@ int main(int argc, char* argv[])
                 if((ch=fgetc(rFile))=='T'){
                     if((ch=fgetc(rFile))=='O'){
                         if((ch=fgetc(rFile))=='P'){
+                            stop = 1;
                             break;
                         }
                     }
                 }
             }
+            if(stop == 1) break;
             if(ch != EOF) fputc(ch, wFile);
         }
+        ch = 0;
 
 
     }
+
+    fputc('\b', wFile);
+    fputc('\0', wFile);
     
     fclose(rFile);
     fclose(wFile);    
