@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "container.h": "c",
+    "room.h": "c",
+    "stdio.h": "c",
+    "command.h": "c"
+  }
+}
